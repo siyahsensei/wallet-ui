@@ -1,109 +1,108 @@
-# Wallet UI - Finansal Varlık Yönetimi Arayüzü
+# Wallet UI - Financial Asset Management Interface
 
-Bu proje, Wallet API'sine bağlanan Vue 3 tabanlı bir web arayüzüdür. Kullanıcıların finansal varlıklarını (banka hesapları, hisse senetleri, kripto paralar vb.) yönetmelerini sağlar.
+This project is a Vue 3 based web interface that connects to the Wallet API. It allows users to manage their financial assets (bank accounts, stocks, cryptocurrencies, etc.).
 
-## Özellikler
+## Features
 
-- Kullanıcı kimlik doğrulama (giriş/kayıt)
-- Dashboard ile genel bakış
-- Hesap yönetimi (banka hesapları, yatırım hesapları, kripto cüzdanlar vb.)
-- Varlık yönetimi (hisse senetleri, kripto paralar, altın vb.)
-- İşlem kaydı ve takibi
-- Varlık dağılımı ve performans grafikleri
-- Responsive tasarım
+-   User authentication (login/registration)
+-   Dashboard with overview
+-   Account management (bank accounts, investment accounts, crypto wallets, etc.)
+-   Asset management (stocks, cryptocurrencies, gold, etc.)
+-   Transaction recording and tracking
+-   Asset allocation and performance charts
+-   Responsive design
 
-## Teknolojiler
+## Technologies
 
-- Vue 3 (Composition API)
-- Vue Router
-- Pinia (Durum yönetimi)
-- Axios
-- Chart.js
-- Tailwind CSS
+-   Vue 3 (Composition API)
+-   Vue Router
+-   Pinia (State management)
+-   Axios
+-   Chart.js
+-   Tailwind CSS
 
-## Kurulum
+## Installation
 
-### Gereksinimler
+### Requirements
 
-- Node.js (v14+)
-- NPM veya Yarn
+-   Node.js (v14+)
+-   NPM or Yarn
 
-### Adımlar
+### Steps
 
-1. Bağımlılıkları yükleyin:
-```bash
-cd ui
-npm install
-# veya
-yarn install
-```
+1.  Install dependencies:
 
-2. Geliştirme sunucusunu başlatın:
-```bash
-npm run dev
-# veya
-yarn dev
-```
+    ```bash
+    cd ui
+    npm install
+    # or
+    yarn install
+    ```
 
-3. Tarayıcınızı açın ve http://localhost:5173 adresine gidin.
+2.  Start the development server:
 
-API sunucusu http://localhost:8080 üzerinde çalışıyor olmalıdır.
+    ```bash
+    npm run dev
+    # or
+    yarn dev
+    ```
 
-## Yapı
+3.  Open your browser and go to http://localhost:5173.
+
+The API server must be running on http://localhost:8080.
+
+## Structure
 
 ```
 ui/
-├── public/            # Statik dosyalar
+├── public/            # Static files
 ├── src/
-│   ├── assets/        # CSS, resimler vb.
-│   │   ├── charts/    # Görselleştirme bileşenleri
-│   │   ├── forms/     # Form bileşenleri
-│   │   └── layout/    # Düzen bileşenleri (header, footer, vb.)
-│   ├── router/        # Vue Router yapılandırması
-│   ├── services/      # API bağlantıları
-│   ├── stores/        # Pinia durum yönetimi
-│   ├── views/         # Sayfa bileşenleri
-│   │   ├── auth/      # Kimlik doğrulama sayfaları
-│   │   ├── accounts/  # Hesap yönetimi sayfaları
-│   │   ├── assets/    # Varlık yönetimi sayfaları
-│   │   └── transactions/ # İşlem sayfaları
-│   ├── App.vue        # Kök bileşen
-│   └── main.js        # Uygulama başlangıç noktası
-├── index.html         # Ana HTML dosyası
-├── package.json       # Proje bağımlılıkları ve komutları
-└── vite.config.js     # Vite yapılandırması
+│   ├── assets/        # CSS, images, etc.
+│   │   ├── charts/    # Visualization components
+│   │   ├── forms/     # Form components
+│   │   └── layout/    # Layout components (header, footer, etc.)
+│   ├── router/        # Vue Router configuration
+│   ├── services/      # API connections
+│   ├── stores/        # Pinia state management
+│   ├── views/         # Page components
+│   │   ├── auth/      # Authentication pages
+│   │   ├── accounts/  # Account management pages
+│   │   ├── assets/    # Asset management pages
+│   │   └── transactions/ # Transaction pages
+│   ├── App.vue        # Root component
+│   └── main.js        # Application entry point
+├── index.html         # Main HTML file
+├── package.json       # Project dependencies and scripts
+└── vite.config.js     # Vite configuration
 ```
 
-## API İstekleri
+## API Requests
 
-Uygulama, Vite dev sunucusu proxy ayarları sayesinde API isteklerini Backend sunucusuna yönlendirir. Bu yapılandırma, CORS sorunlarını önler ve geliştirme sürecini kolaylaştırır.
+The application forwards API requests to the Backend server using the Vite dev server's proxy settings. This configuration prevents CORS issues and simplifies the development process.
 
-API istekleri şu pattern'leri takip eder:
-- `/api/v1/auth/*` - Kimlik doğrulama işlemleri
-- `/api/v1/accounts/*` - Hesap yönetimi
-- `/api/v1/assets/*` - Varlık yönetimi
-- `/api/v1/transactions/*` - İşlem yönetimi
+API requests follow these patterns:
 
-## Uygulamayı Derleme
+-   `/api/v1/auth/*` - Authentication operations
+-   `/api/v1/accounts/*` - Account management
+-   `/api/v1/assets/*` - Asset management
+-   `/api/v1/transactions/*` - Transaction management
 
-Üretim ortamı için uygulamayı derlemek:
+## Building the Application
+
+To build the application for production:
 
 ```bash
 npm run build
-# veya
+# or
 yarn build
 ```
 
-Bu komut, projeyi `/dist` klasörüne derler. Bu klasördeki dosyalar, herhangi bir statik dosya sunucusuna dağıtılabilir.
+This command compiles the project into the `/dist` folder. The files in this folder can be deployed to any static file server.
 
-## Docker ile Çalıştırma
+## Running with Docker
 
-Ana projede bulunan `docker-compose.yml` dosyası, API ve UI'ı birlikte çalıştırmak için yapılandırılmıştır. Uygulama Docker ile şu şekilde çalıştırılabilir:
+The `docker-compose.yml` file in the main project is configured to run the API and UI together. The application can be run with Docker as follows:
 
 ```bash
-docker-compose up -d
+docker-compose up --build
 ```
-
-## İletişim
-
-Sorularınız veya önerileriniz için: [e-posta adresi] 
